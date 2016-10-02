@@ -17,17 +17,23 @@ router.get('/login', function(req, res) {
 
 //Register
 router.post('/register', function(req, res) {
-	var name = req.body.name;
-	var email = req.body.email;
+	var first_name = req.body.first_name;
+	var last_name = req.body.last_name;
 	var username = req.body.username;
+	var gender = req.body.gender;
+	var birthdate = Date.parse(req.body.birthdate);
+	var email = req.body.email;
 	var password = req.body.password;
 	var password2 = req.body.password2;
 
 	//Validation
-	req.checkBody('name', 'Name is required').notEmpty();
+	req.checkBody('first_name', 'First name is required').notEmpty();
+	req.checkBody('last_name', 'Last name is required').notEmpty();
+	req.checkBody('username', 'Username is required').notEmpty();
+	req.checkBody('birthdate', 'Birthdate is required').isDate();
+	req.checkBody('gender', 'Gender is required').notEmpty();
 	req.checkBody('email', 'Email is required').notEmpty();
 	req.checkBody('email', 'Email is not valid').isEmail();
-	req.checkBody('username', 'Username is required').notEmpty();
 	req.checkBody('password', 'Password is required').notEmpty();
 	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
 
@@ -39,11 +45,13 @@ router.post('/register', function(req, res) {
 		});
 	} else {
 		var newUser = new User({
-			name: name,
-			email: email,
+			first_name: first_name,
+			last_name: last_name,
 			username: username,
+			birthdate: birthdate,
+			gender: gender,
+			email: email,
 			password: password
-
 		});
 
 		User.createUser(newUser, function(err, user) {
@@ -97,6 +105,7 @@ router.post('/login',
   	res.redirect('/');
   });
 
+//logout
 router.get('/logout', function(req, res) {
 	req.logout();
 

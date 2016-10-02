@@ -4,9 +4,21 @@ var bcrypt = require('bcryptjs');
 //set schema
 
 var userSchema = mongoose.Schema({
+	first_name: {
+		type: String
+	},
+	last_name: {
+		type: String
+	},
 	username: {
 		type: String,
 		index: true
+	},
+	gender: {
+		type: String
+	},
+	birthdate: {
+		type: Date
 	},
 	password: {
 		type: String
@@ -14,9 +26,6 @@ var userSchema = mongoose.Schema({
 	email: {
 		type: String
 	},
-	name: {
-		type: String
-	}
 });
 
 var User = module.exports = mongoose.model('User', userSchema);
@@ -42,7 +51,7 @@ module.exports.getUserByUsername = function(username, callback){
 module.exports.comparePassword = function(candidatePassword, hash, callback){
 	// Load hash from your password DB. 
 	bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
-	    if (err) throw err;
+	   // if (err) throw err;
 	    callback(null, isMatch);
 	});
 };

@@ -16,6 +16,11 @@ router.get('/profile', ensureAuthenticated, function(req, res) {
 	res.render('profile');
 });
 
+//get profile
+router.get('/my_posts', ensureAuthenticated, function(req, res) {
+	res.render('my_posts');
+});
+
 //restrict page views based on login status
 function ensureAuthenticated(req, res, next){
 	if(req.isAuthenticated()) {

@@ -1,0 +1,51 @@
+<h2 class="page-header">My Posts</h2>
+<p>My Posts:</p>
+<table class="table-striped">
+	<thead>
+		<th>Post ID</th>
+		<th>Title</th>
+		<th>Type</th>
+		<th>Address</th>
+		<th>Text</th>
+		<th>Post Date</th>
+		<th>Status</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+		</tr>
+	</tbody>
+</table>
+			{{user.first_name}}
+			{{user.last_name}}
+			{{user.birthdate}}
+			{{user.gender}}
+			{{user.email}}
+			{{user.username}}
+			{{user.password}}
+<form method="post" action="/posts/create">
+<div class="form-group">
+	<label>post title</label>
+	<input type="text" class="form-control" name="postTitle" placeholder="Title">
+</div>
+<div class="form-group">
+	<label>Message</label>
+	<input type="text" class="form-control" name="postMessage" placeholder="Message">
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
